@@ -1,4 +1,4 @@
-# API Automation Framework Java and Rest Assured
+# ✅ API Automation Framework with Java and Rest Assured
 
 This framework provides a robust solution for API test automation with features for authentication, reporting, and test management.
 

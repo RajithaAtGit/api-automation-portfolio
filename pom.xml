@@ -1,3 +1,30 @@
+<!--
+  ~ Proprietary and Confidential
+  ~
+  ~ Copyright (c) 2025 R N W Gunawardana. All Rights Reserved.
+  ~
+  ~ This software and its documentation are proprietary and confidential information of R N W Gunawardana.
+  ~ No part of this software, including but not limited to the source code, documentation, specifications,
+  ~ and design, may be reproduced, stored in a retrieval system, transmitted in any form or by any means,
+  ~ or distributed in any way without the explicit prior written permission of R N W Gunawardana.
+  ~
+  ~ UNAUTHORIZED COPYING, REPRODUCTION, MODIFICATION, DISTRIBUTION, OR USE OF THIS SOFTWARE,
+  ~ VIA ANY MEDIUM, IS STRICTLY PROHIBITED.
+  ~
+  ~ The receipt or possession of this software does not convey any rights to use, modify, or distribute it.
+  ~ Use of this software is subject to a valid license agreement with R N W Gunawardana.
+  ~
+  ~ THIS SOFTWARE IS PROVIDED "AS IS" WITHOUT WARRANTY OF ANY KIND, EITHER EXPRESS OR IMPLIED,
+  ~ INCLUDING, BUT NOT LIMITED TO WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE
+  ~ AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIMS,
+  ~ DAMAGES OR OTHER LIABILITIES ARISING FROM THE USE OF THIS SOFTWARE.
+  ~
+  ~ AI Training Restriction Notice:
+  ~ Use of this codebase for training artificial intelligence and machine learning models is strictly
+  ~ prohibited without explicit written permission from R N W Gunawardana. Any unauthorized use for
+  ~ AI/ML training purposes will be considered a violation of intellectual property rights and may
+  ~ result in legal action.
+  -->
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
   xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
   <modelVersion>4.0.0</modelVersion>
@@ -12,14 +39,211 @@
 
   <properties>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <maven.compiler.source>21</maven.compiler.source>
+    <maven.compiler.target>21</maven.compiler.target>
+    <rest-assured.version>5.3.1</rest-assured.version>
+    <testng.version>7.8.0</testng.version>
+    <allure.version>2.24.0</allure.version>
+    <allure-maven.version>2.12.0</allure-maven.version>
+    <aspectj.version>1.9.20.1</aspectj.version>
+    <log4j.version>2.20.0</log4j.version>
+    <slf4j.version>2.0.9</slf4j.version>
+    <jackson.version>2.15.2</jackson.version>
+    <lombok.version>1.18.30</lombok.version>
+    <json-schema-validator.version>5.3.1</json-schema-validator.version>
+    <wiremock.version>3.0.1</wiremock.version>
+    <commons-io.version>2.14.0</commons-io.version>
+    <commons-lang3.version>3.13.0</commons-lang3.version>
+    <gson.version>2.10.1</gson.version>
+    <awaitility.version>4.2.0</awaitility.version>
+    <maven-surefire-plugin.version>3.1.2</maven-surefire-plugin.version>
   </properties>
 
   <dependencies>
+    <!-- REST Assured -->
     <dependency>
-      <groupId>junit</groupId>
-      <artifactId>junit</artifactId>
-      <version>3.8.1</version>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>rest-assured</artifactId>
+      <version>${rest-assured.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.rest-assured</groupId>
+      <artifactId>json-schema-validator</artifactId>
+      <version>${json-schema-validator.version}</version>
+    </dependency>
+
+    <!-- TestNG -->
+    <dependency>
+      <groupId>org.testng</groupId>
+      <artifactId>testng</artifactId>
+      <version>${testng.version}</version>
+    </dependency>
+
+    <!-- Allure Reporting -->
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-testng</artifactId>
+      <version>${allure.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>io.qameta.allure</groupId>
+      <artifactId>allure-rest-assured</artifactId>
+      <version>${allure.version}</version>
+    </dependency>
+
+    <!-- Logging -->
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-api</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-core</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.logging.log4j</groupId>
+      <artifactId>log4j-slf4j2-impl</artifactId>
+      <version>${log4j.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-api</artifactId>
+      <version>${slf4j.version}</version>
+    </dependency>
+
+    <!-- JSON Processing -->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.dataformat</groupId>
+      <artifactId>jackson-dataformat-yaml</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.google.code.gson</groupId>
+      <artifactId>gson</artifactId>
+      <version>${gson.version}</version>
+    </dependency>
+
+    <!-- Lombok -->
+    <dependency>
+      <groupId>org.projectlombok</groupId>
+      <artifactId>lombok</artifactId>
+      <version>${lombok.version}</version>
+      <scope>provided</scope>
+    </dependency>
+
+    <!-- Apache Commons -->
+    <dependency>
+      <groupId>commons-io</groupId>
+      <artifactId>commons-io</artifactId>
+      <version>${commons-io.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>org.apache.commons</groupId>
+      <artifactId>commons-lang3</artifactId>
+      <version>${commons-lang3.version}</version>
+    </dependency>
+
+    <!-- WireMock for Service Virtualization -->
+    <dependency>
+      <groupId>org.wiremock</groupId>
+      <artifactId>wiremock</artifactId>
+      <version>${wiremock.version}</version>
       <scope>test</scope>
     </dependency>
+
+    <!-- Awaitility for polling and async testing -->
+    <dependency>
+      <groupId>org.awaitility</groupId>
+      <artifactId>awaitility</artifactId>
+      <version>${awaitility.version}</version>
+    </dependency>
+
   </dependencies>
+
+  <build>
+    <plugins>
+      <!-- Maven Compiler Plugin -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-compiler-plugin</artifactId>
+        <version>3.11.0</version>
+        <configuration>
+          <source>${maven.compiler.source}</source>
+          <target>${maven.compiler.target}</target>
+          <annotationProcessorPaths>
+            <path>
+              <groupId>org.projectlombok</groupId>
+              <artifactId>lombok</artifactId>
+              <version>${lombok.version}</version>
+            </path>
+          </annotationProcessorPaths>
+        </configuration>
+      </plugin>
+
+      <!-- Maven Surefire Plugin for TestNG -->
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-surefire-plugin</artifactId>
+        <version>${maven-surefire-plugin.version}</version>
+        <configuration>
+          <suiteXmlFiles>
+            <suiteXmlFile>src/test/resources/testng.xml</suiteXmlFile>
+          </suiteXmlFiles>
+          <!-- 
+            AspectJ weaver agent temporarily disabled due to path issues with mixed slashes
+            Original configuration:
+            <argLine>
+              -javaagent:"${settings.localRepository}/org/aspectj/aspectjweaver/${aspectj.version}/aspectjweaver-${aspectj.version}.jar"
+            </argLine>
+
+            For a permanent fix:
+            1. Ensure the AspectJ weaver JAR is properly downloaded to your local Maven repository
+            2. Use a consistent path format (all forward slashes or all backslashes)
+            3. Consider using a plugin like maven-dependency-plugin to copy the JAR to a known location
+          -->
+          <systemPropertyVariables>
+            <allure.results.directory>${project.build.directory}/allure-results</allure.results.directory>
+          </systemPropertyVariables>
+        </configuration>
+        <!-- 
+          AspectJ weaver dependency temporarily disabled due to issues
+          The dependency was causing errors when trying to load the JAR file:
+          "Error opening zip file or JAR manifest missing : C:\Users\VGUNARA\.m2\repository/org/aspectj/aspectjweaver/1.9.20.1/aspectjweaver-1.9.20.1.jar"
+
+          This is likely due to the mixed use of backslashes and forward slashes in the path.
+          For a permanent fix, consider:
+          1. Manually downloading the AspectJ weaver JAR and placing it in your local Maven repository
+          2. Using a consistent path format in the configuration
+          3. Using a plugin like maven-dependency-plugin to manage the dependency
+        -->
+        <!-- <dependencies>
+          <dependency>
+            <groupId>org.aspectj</groupId>
+            <artifactId>aspectjweaver</artifactId>
+            <version>${aspectj.version}</version>
+          </dependency>
+        </dependencies> -->
+      </plugin>
+
+      <!-- Allure Maven Plugin -->
+      <plugin>
+        <groupId>io.qameta.allure</groupId>
+        <artifactId>allure-maven</artifactId>
+        <version>${allure-maven.version}</version>
+        <configuration>
+          <reportVersion>${allure.version}</reportVersion>
+          <resultsDirectory>${project.build.directory}/allure-results</resultsDirectory>
+          <reportDirectory>${project.build.directory}/allure-report</reportDirectory>
+        </configuration>
+      </plugin>
+
+    </plugins>
+  </build>
 </project>

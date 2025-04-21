@@ -2,7 +2,11 @@
 
 This framework provides a robust solution for API test automation with features for authentication, reporting, and test management.
 
+![API Automation Framework Overview](Diagram/img.png)
+
 ## Package Structure
+
+![Framework Architecture Diagram](Diagram/mermaid-diagram-2025-04-21-202856.png)
 The framework is organized into the following packages:
 
 - `com.gtrxone.auth`: Authentication-related classes (strategies, managers)
